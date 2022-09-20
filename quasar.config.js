@@ -175,18 +175,18 @@ module.exports = configure(function (/* ctx */) {
 
       bundler: 'builder', // 'packager' or 'builder'
 
-      packager: {
-        // https://github.com/electron-userland/electron-packager/blob/master/docs/api.md#options
+      // packager: {
+      // https://github.com/electron-userland/electron-packager/blob/master/docs/api.md#options
 
-        // OS X / Mac App Store
-        // appBundleId: '',
-        // appCategoryType: '',
-        // osxSign: '',
-        // protocol: 'myapp://path',
+      // OS X / Mac App Store
+      // appBundleId: '',
+      // appCategoryType: '',
+      // osxSign: '',
+      // protocol: 'myapp://path',
 
-        // Windows only
-        // win32metadata: { ... }
-      },
+      // Windows only
+      // win32metadata: { ... }
+      // },
 
       builder: {
         // https://www.electron.build/configuration/configuration
@@ -206,10 +206,10 @@ module.exports = configure(function (/* ctx */) {
         //   ]
         // },
         win: {
-          publisherName: 'Trinity InfoSystem',
-          publish: [
-            'github'
-          ],
+          // publisherName: 'Lakshitha',
+          // publish: [
+          //   'github'
+          // ],
           target: [
             'nsis'
           ]
@@ -225,25 +225,25 @@ module.exports = configure(function (/* ctx */) {
         //   "icon": "assets/icon.icns",
         //   "title": "Accurate Installer"
         // },
-        nsis: {
-          oneClick: false,
-          perMachine: false,
-          allowToChangeInstallationDirectory: true,
-          installerIcon: 'src-electron/icons/icon.ico',
-          // installerSidebar: 'assets/sidebar.bmp',
-          // uninstallerSidebar: 'assets/sidebar.bmp',
-          // license: 'assets/agreement.html',
-          createDesktopShortcut: true,
-          createStartMenuShortcut: true
-        },
+        // nsis: {
+        //   oneClick: false,
+        //   perMachine: false,
+        //   allowToChangeInstallationDirectory: true,
+        //   installerIcon: 'src-electron/icons/icon.ico',
+        //   // installerSidebar: 'assets/sidebar.bmp',
+        //   // uninstallerSidebar: 'assets/sidebar.bmp',
+        //   // license: 'assets/agreement.html',
+        //   createDesktopShortcut: true,
+        //   createStartMenuShortcut: true
+        // },
         publish: [
           {
             provider: 'github',
             owner: 'william96edu',
-            repo: 'electron_test',
-            vPrefixedTagName: true,
+            repo: 'relase_test'
+            // vPrefixedTagName: true,
             // private: true,
-            releaseType: 'prerelease'
+            // releaseType: 'release'
           }
         ]
       }

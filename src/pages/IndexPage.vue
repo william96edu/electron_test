@@ -1,5 +1,6 @@
 <template>
-  <q-page class="row items-center justify-evenly">
+  <q-page padding>
+  <div class="bg-red col text-white">Hello</div>
     <example-component
       title="Example component"
       active
