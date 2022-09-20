@@ -191,7 +191,61 @@ module.exports = configure(function (/* ctx */) {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: 'electron-test'
+        appId: 'com.els.electron.test',
+        productName: 'Test App',
+        copyright: 'Copyright © 2022 Lakshitha Elapatha',
+        // "mac": {
+        //   "category": "public.app-category.utilities",
+        //   "icon": "assets/icon.icns",
+        //   "target": [
+        //     "zip",
+        //     "dmg"
+        //   ],
+        //   "publish": [
+        //     "github"
+        //   ]
+        // },
+        win: {
+          publisherName: 'Trinity InfoSystem',
+          publish: [
+            'github'
+          ],
+          target: [
+            'nsis'
+          ]
+        },
+        // "linux": {
+        //   "target": [
+        //     "AppImage",
+        //     "tar.gz"
+        //   ]
+        // },
+        // "dmg": {
+        //   "background": "assets/background.png",
+        //   "icon": "assets/icon.icns",
+        //   "title": "Accurate Installer"
+        // },
+        nsis: {
+          oneClick: false,
+          perMachine: false,
+          allowToChangeInstallationDirectory: true,
+          installerIcon: 'src-electron/icons/icon.ico',
+          // installerSidebar: 'assets/sidebar.bmp',
+          // uninstallerSidebar: 'assets/sidebar.bmp',
+          // license: 'assets/agreement.html',
+          createDesktopShortcut: true,
+          createStartMenuShortcut: true
+        },
+        publish: [
+          {
+            provider: 'github',
+            owner: 'william96edu',
+            repo: 'electron_test',
+            vPrefixedTagName: true,
+            // private: true,
+            releaseType: 'prerelease'
+          }
+        ]
       }
     },
 

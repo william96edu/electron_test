@@ -1,9 +1,23 @@
 import { app, BrowserWindow, nativeTheme } from 'electron'
 import path from 'path'
 import os from 'os'
+import { autoUpdater } from 'electron-updater'
 // initialize()
 // needed in case process is undefined under Linux
 const platform = process.platform || os.platform()
+
+export default class AppUpdater {
+  constructor () {
+    const log = require('electron-log')
+    log.transports.file.level = 'debug'
+    autoUpdater.logger = log
+    autoUpdater.checkForUpdatesAndNotify()
+  }
+
+  call () {
+    //
+  }
+}
 
 try {
   if (platform === 'win32' && nativeTheme.shouldUseDarkColors === true) {
@@ -50,6 +64,8 @@ function createWindow () {
   mainWindow.on('closed', () => {
     mainWindow = undefined
   })
+
+  new AppUpdater().call()
 }
 
 app.whenReady().then(createWindow)
