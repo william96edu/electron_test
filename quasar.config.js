@@ -240,10 +240,10 @@ module.exports = configure(function (/* ctx */) {
           {
             provider: 'github',
             owner: 'william96edu',
-            repo: 'relase_test'
+            repo: 'electron_test',
             // vPrefixedTagName: true,
             // private: true,
-            // releaseType: 'release'
+            releaseType: 'release'
           }
         ]
       }

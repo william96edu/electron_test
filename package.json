@@ -1,6 +1,6 @@
 {
   "name": "electron-test",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A Quasar Project",
   "productName": "Quasar App",
   "author": "Lakshitha Elapatha <lakshitha.elapatha@mjhudson.com>",
@@ -28,7 +28,7 @@
     "@typescript-eslint/parser": "^5.10.0",
     "autoprefixer": "^10.4.2",
     "electron": "^20.1.0",
-    "electron-builder": "^22.4.0",
+    "electron-builder": "^20.38.2",
     "eslint": "^8.10.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.19.1",
