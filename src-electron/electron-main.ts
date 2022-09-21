@@ -1,4 +1,4 @@
-import { app, BrowserWindow, nativeTheme } from 'electron'
+import { app, BrowserWindow, dialog, nativeTheme } from 'electron'
 import path from 'path'
 import os from 'os'
 import { autoUpdater } from 'electron-updater'
@@ -14,8 +14,39 @@ export default class AppUpdater {
     autoUpdater.checkForUpdatesAndNotify()
   }
 
-  call () {
-    //
+  call (win:BrowserWindow) {
+    autoUpdater.autoDownload = false
+    autoUpdater.checkForUpdates()
+
+    autoUpdater.on('checking-for-update', () => {
+      dialog.showMessageBox(win, { message: 'checking-for-update' })
+    })
+
+    autoUpdater.on('error', (err) => {
+      dialog.showErrorBox('Error', err.message)
+    })
+
+    autoUpdater.on('update-available', (info) => {
+      dialog.showMessageBox(win, { message: 'Available', detail: JSON.stringify(info), buttons: ['OK', 'cancel'] })
+        .then(() => {
+          autoUpdater.downloadUpdate().then(() => {
+            dialog.showMessageBox(win, { icon: 'info', message: 'Reastart' })
+              .then(() => autoUpdater.quitAndInstall())
+          })
+        })
+    })
+
+    // this.autoUpdater.on('download-progress', (info) => {
+    //   mainWindow.webContents.send(Events.UpdateDownloadProgress, Status.Progress, info)
+    // })
+
+    // this.autoUpdater.on('update-downloaded', (info) => {
+    //   mainWindow.webContents.send(Events.UpdateDownloaded, Status.Downloaded, info)
+    // })
+
+    // this.autoUpdater.on('update-not-available', (info) => {
+    //   mainWindow.webContents.send(Events.UpdateNotAvailable, Status.NotAvailable, info)
+    // })
   }
 }
 
@@ -65,7 +96,7 @@ function createWindow () {
     mainWindow = undefined
   })
 
-  new AppUpdater().call()
+  new AppUpdater().call(mainWindow)
 }
 
 app.whenReady().then(createWindow)
