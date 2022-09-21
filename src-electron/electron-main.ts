@@ -2,6 +2,7 @@ import { app, BrowserWindow, dialog, nativeTheme } from 'electron'
 import path from 'path'
 import os from 'os'
 import { autoUpdater } from 'electron-updater'
+// import logger from 'electron-log'
 // initialize()
 // needed in case process is undefined under Linux
 const platform = process.platform || os.platform()
@@ -30,10 +31,17 @@ export default class AppUpdater {
       dialog.showMessageBox(win, { message: 'Available', detail: JSON.stringify(info), buttons: ['OK', 'cancel'] })
         .then(() => {
           autoUpdater.downloadUpdate().then(() => {
-            dialog.showMessageBox(win, { icon: 'info', message: 'Reastart' })
+            dialog.showMessageBox(win, { icon: 'info', message: 'Restart' })
               .then(() => autoUpdater.quitAndInstall())
           })
         })
+    })
+
+    autoUpdater.on('download-progress', (info) => {
+      dialog.showMessageBox(win, { message: 'progress', detail: JSON.stringify(info) })
+    })
+    autoUpdater.on('update-not-available', () => {
+      dialog.showMessageBox(win, { message: 'NO' })
     })
 
     // this.autoUpdater.on('download-progress', (info) => {
