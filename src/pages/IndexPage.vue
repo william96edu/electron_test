@@ -1,6 +1,6 @@
 <template>
-  <q-page padding>
-  <div class="bg-red col text-white">Hello</div>
+  <q-page class="flex flex-center" padding>
+  <div class="bg-red col q-pa-lg-lg text-lg text-white">Hello</div>
     <example-component
       title="Example component"
       active
